@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML Lista de frutas</title>
+        <style type="text/css">
+            body {
+                font-family: Calibri;
+                color: black;
+                font-size: 20px;
+                background-color: white }
+        </style>
+    </head>
+ 
+    <body>
+        <div> 
+        <h1 align="center"><img src="frutis.png" align="center" border=0/><br clear="left"></div></h1>
+
+         <div> 
+         <h2 align="center">Agrega tu fruta</h2>       
+            <p align="center"><strong>Frutas Master</strong> es una empresa familiar de tercera generación que se dedica a la compra, venta y distrubución de frutas al por mayor.</br> En la actualidad somos la empresa líder en el servicio de distribución de frutas.</p> 
+        <h3>Catálogo</h3>
+        <ol id="listaOrdenada">
+                <li>Manzana</li>
+                <li>Pera</li>
+                <li>Piña</li>
+                <li>Cereza</li>
+                <li>Naranja</li>
+        </ol>
+        </div>
+        <p>
+                <input type="text" id="nuevo_li">
+                <input type="submit" onclick="return add_li()" value="Agregar fruta">
+        </p></label>
+         <script>
+ 
+        /*
+         Funcion que añade un <li> dentro del <ol>
+         */
+        function add_li()
+        {
+            var nuevoLi=document.getElementById("nuevo_li").value;
+            if(nuevoLi.length>0)
+            {
+                if(find_li(nuevoLi))
+                {
+                    var li=document.createElement('li');
+                    li.id=nuevoLi;
+                    li.innerHTML=nuevoLi;
+                    document.getElementById("listaOrdenada").appendChild(li);
+                }
+            }
+            return false;
+        }
+ 
+        /*
+          Funcion que busca si existe ya el <li> dentrol del <ul>
+          Devuelve true si no existe.
+         */
+        function find_li(contenido)
+        {
+            var el = document.getElementById("listaOrdenada").getElementsByTagName("li");
+            for (var i=0; i<el.length; i++)
+            {
+                if(el[i].innerHTML==contenido)
+                    return false;
+            }
+            return true;
+        }
+ 
+        
+    </script>
+    </body>
+</html>
